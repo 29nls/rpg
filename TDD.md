@@ -1056,17 +1056,9 @@ Setiap angka di TDD merujuk CDP:
 - Combat: turn by speed; mana/energy per hero; status Burn/Freeze/Poison/Stun/AtkDown/DefDown/Shield/Regen; 6 elemen Fire/Water/Earth/Wind/Light/Dark afinitas 1.5x/0.75x.
 - Tech: Phaser 3 primary; Three.js hanya 3D hero post-MVP; ECS-lite; TS; Vite; vite-plugin-pwa; 60 FPS fixed timestep; backend Node/NestJS+Postgres+Redis+BullMQ+WS+CDN; client REST+WS; server-authoritative.
 
-### 10.4 Open Questions (perlu keputusan)
+### 10.4 Open Questions — RESOLVED
 
-| No | Pertanyaan | Pemilik | Blokir? |
-|----|-----------|---------|---------|
-| OQ1 | Apakah butuh **mock server** saat backend belum siap? (Rekomendasi: ya, `MSW` atau stub `net/` untuk dev & E2E) | Backend/Client lead | Ya untuk dev paralel |
-| OQ2 | Apakah PvP real-time turn relay atau async (mail-style)? Mempengaruhi WS load | Game Designer | Ya untuk PvP scope |
-| OQ3 | Apakah battle MVP sepenuhnya server-authoritative (client kirim *action log*, server sim ulang) atau server hanya validasi hasil? (Rekomendasi: server validasi hasil + sanity check untuk MVP; sim ulang penuh bila cheat tinggi) | Tech Lead | Sebagian |
-| OQ4 | Format shard/region untuk DAU 10–50 lalu scale? (Client agnostic bila API URL via env) | Backend/Ops | Tidak |
-| OQ5 | Apakah perlu `sourcemap` di production untuk error tracking? (Rekomendasi: ya, privat) | Ops | Tidak |
-| OQ6 | Strategi versi & *forced update* saat CDP/balance berubah? (Client cek `/meta/config` version) | Client lead | Tidak |
-| OQ7 | Bahasa/region store (GDPR Eropa vs PDPA Asia)? Mempengaruhi consent UI | Legal/PM | Tidak |
+Semua OQ1–OQ7 dikunci di `DECISION_REGISTER.md`. Ringkasan: mock server MSW Ya (`D-14`); PvP relay WS real-time (`D-15`); battle validate-result + sanity untuk MVP, full-replay bila cheat naik (`D-16`); shard env-based (`D-17`); sourcemap privat Ya (`D-18`); forced update via `/meta/config` (`D-19`); region dual GDPR+PDPA, default PDPA (`D-20`).
 
 ---
 

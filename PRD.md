@@ -1153,20 +1153,22 @@ Semua response: `{ok: bool, data?, error?: {code, msg}, req_id}`. Semua mutasi b
 | Cache-first PWA | Cepat | Update stale vs load; hash versioning atasi |
 | Monetisasi etis | IAP currency | ARPU rendah vs kepercayaan jangka panjang |
 
-# 30. Open Questions (Belum Diputuskan — Butuh Input Desain/Bisnis)
+# 30. Open Questions — RESOLVED
 
-| # | Pertanyaan | Dampak | Pemilik |
-|---|-----------|--------|---------|
-| Q1 | Peta elemen final (§2.1.3 contoh vs revisi)? | Balance combat | Game Designer |
-| Q2 | Nilai pasti soft-pity curve (§17.2)? | Gacha feel | Game Designer |
-| Q3 | Harga IAP & region (§7.2)? | Revenue & compliance pajak | Product/Biz |
-| Q4 | Batas listing & MM ELO (§14.1, §18.1)? | Market & PvP feel | Game Designer |
-| Q5 | Apakah consol login di MVP? | Onboarding | Product |
-| Q6 | Threshold refund & spending limit default? | Proteksi user | Product/Legal |
-| Q7 | Apakah battle pass di MVP atau pasca-launch? | Scope | Product |
-| Q8 | Server time sync toleransi skew? | Idle fairness | Backend |
+Semua keputusan Q1–Q8 telah **dikunci**. Lihat `DECISION_REGISTER.md` untuk nilai final, pemilik, dan tanggal. Ringkasan singkat:
 
-> Semua jawaban harus konsisten dengan CDP. Jika bertentangan, CDP menang.
+| # | Keputusan Final |
+|---|-----------------|
+| Q1 | Matrix elemen diadopsi dari draft (1.5 strong / 1.0 netral / 0.75 weak) → `D-01`. |
+| Q2 | Soft-pity ramp linier dari pull ke-75 hingga hard-pity 90 → `D-02`. |
+| Q3 | IAP = Gem pack + (pasca) Battle Pass; region mulai Asia (PDPA) lalu EU (GDPR); pajak pass-through → `D-03`. |
+| Q4 | Listing aktif maks 50/user; bracket ELO tiap 200 poin → `D-04`. |
+| Q5 | Login email/password + consent checkbox wajib; email verify soft (tidak blokir gameplay) → `D-05`. |
+| Q6 | Spending limit default nonaktif (opt-in); refund ikut kebijakan platform (≤48 jam) → `D-06`. |
+| Q7 | Battle Pass **PASCA-LAUNCH** (tidak di MVP) → `D-07`. |
+| Q8 | Toleransi skew server time ±2 menit untuk perhitungan idle → `D-08`. |
+
+> Keputusan harus tetap konsisten dengan CDP. Jika bertentangan, CDP menang.
 
 ---
 
@@ -1417,7 +1419,7 @@ Asumsi: 50 DAU, rata2 2 sesi/hari, idle cap 24 jam.
 
 PRD ini mendefinisikan RPG fantasi turn-based idle web+PWA dengan fokus **aman & beroperasi**. Seluruh angka mengikat CDP (Lampiran A). MVP realistis untuk tim kecil & 10–50 DAU, scalable ke ribuan. Keamanan (server-authoritative, gacha audit, marketplace anti-duplikasi) dan compliance (GDPR/PDPA) diperlakukan sebagai fitur inti, bukan tambahan. Monetisasi etis (currency, bukan power-lock) menjaga kepercayaan jangka panjang.
 
-Langkah berikut: jawab Open Questions (§30), lalu masuk Tahap 0 (§10).
+Langkah berikut: lihat `DECISION_REGISTER.md` (§30 — RESOLVED), lalu masuk Tahap 0 (§10).
 
 ---
 
@@ -1458,7 +1460,7 @@ Langkah berikut: jawab Open Questions (§30), lalu masuk Tahap 0 (§10).
 | Glosarium | Lampiran B | Istilah |
 | API Contract | §27 | Endpoint konsep |
 | Error Code | §26 | E001–E010 |
-| Open Questions | §30 | Belum diputus |
+| Open Questions | §30 | RESOLVED → DECISION_REGISTER.md |
 | Perf Budget | §36.1 | Target teknis |
 
 # 47. Glosarium Ekstended

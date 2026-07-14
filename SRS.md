@@ -1181,18 +1181,9 @@ every 5 seconds (client scheduler mandiri, di luar render loop — GAME_LOOP §7
 - **Escrow marketplace vs instant:** Escrow dipilih untuk integritas; trade-off sedikit kompleksitas.
 - **Fixed timestep vs rAF murni:** Fixed wajib untuk determinisme & 60 FPS stabil; kompleksitas di `LoopController` (`GAME_LOOP.md`).
 
-### 8.4 Open Questions (Perlu Keputusan)
+### 8.4 Open Questions — RESOLVED
 
-| ID | Pertanyaan | Rekomendasi Awal |
-|---|---|---|
-| OQ-01 | Level cap hero & stage awal? | 60 / 100 (asumsi). |
-| OQ-02 | Stamina masuk PvE? | Ya (P1) untuk monetisasi. |
-| OQ-03 | Formula affinity elemen (matrix penuh)? | Lihat §8.5 draft (perlu confirm desainer). |
-| OQ-04 | K-factor ELO pasti? | K=32 (asumsi). |
-| OQ-05 | Marketplace fee %? | 5% (asumsi). |
-| OQ-06 | Hero dupe → star-up? | Ya (P2). |
-| OQ-07 | Mock server saat backend belum siap? | Ya, MSW (`TDD.md` §8.9). |
-| OQ-08 | PvP real-time relay vs async? | Relay WS (TDD §8.3). |
+Semua OQ-01..08 dikunci di `DECISION_REGISTER.md`. Ringkasan: level cap 60 / stage 100 (`D-09`); stamina PvE Ya (`D-10`); matrix elemen adopt draft (`D-01`); K=32 (`D-11`); fee 5% (`D-12`); dupe→star-up Ya (`D-13`); mock server MSW Ya (`D-14`); PvP relay WS (`D-15`).
 
 ### 8.5 Draft Matrix Elemen (OQ-03)
 
@@ -1205,7 +1196,7 @@ every 5 seconds (client scheduler mandiri, di luar render loop — GAME_LOOP §7
 | Light | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.5 |
 | Dark | 1.0 | 1.0 | 1.0 | 1.0 | 1.5 | 1.0 |
 
-> Catatan: Matrix di atas contoh; desainer game harus mengonfirmasi keseimbangan (OQ-03). Multiplier 1.5 (strong) / 0.75 (weak) sesuai CDP.
+> Catatan: Matrix di atas **RESOLVED** (`D-01`, lihat `DECISION_REGISTER.md`). Multiplier 1.5 (strong) / 0.75 (weak) sesuai CDP.
 
 ### 8.6 Status Effect (8 SE) — Detail
 
@@ -1367,7 +1358,7 @@ function resolveBattle(seed, playerParty, enemyParty, playerIntents[]):
 | MARKET_FEE | 0.05 | asumsi |
 | LOGIN_FAIL_LOCK | 5 / 15m | FR-AUTH-04 |
 | JWT_ACCESS_TTL_SEC | 900 | SEC-05 |
-| HERO_LEVEL_CAP | 60 | asumsi OQ-01 |
+| HERO_LEVEL_CAP | 60 | resolved D-09 (OQ-01) |
 | TARGET_FPS / SIM_HZ | 60 | `GAME_LOOP.md` |
 | REFRESH_TOKEN_TTL_DAYS | 30 | asumsi |
 
